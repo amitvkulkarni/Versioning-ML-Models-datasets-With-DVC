@@ -15,6 +15,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score, plot_roc_curve,accuracy_score
 from sklearn.metrics import average_precision_score
+from numpyencoder import NumpyEncoder
 from get_data import read_params
 import matplotlib.pyplot as plt
 import argparse
@@ -55,6 +56,8 @@ def train_and_evaluate(config_path):
     #----------------------------------------------------------------------------------------------------------------------------
        
     precision, recall, prc_thresholds = metrics.precision_recall_curve(test_y, predicted_val)
+    # print('precision value:', precision)
+    # print('recall value:', recall)
     fpr, tpr, roc_thresholds = metrics.roc_curve(test_y, predicted_val)
 
     avg_prec = metrics.average_precision_score(test_y, predicted_val)
@@ -79,7 +82,7 @@ def train_and_evaluate(config_path):
                     for p, r, t in prc_points
                 ]
             }
-        json.dump(str(prcs), fd, indent=4)
+        json.dump(prcs, fd, indent=4, cls=NumpyEncoder)
         
 
     with open(roc_file, "w") as fd:
@@ -89,7 +92,7 @@ def train_and_evaluate(config_path):
                     for fp, tp, t in zip(fpr, tpr, roc_thresholds)
                 ]
             }
-        json.dump(str(rocs), fd, indent=4)
+        json.dump(rocs, fd, indent=4, cls=NumpyEncoder)
         
 
     #----------------------------------------------------------------------------------------------------------------------------
@@ -138,8 +141,8 @@ def train_and_evaluate(config_path):
             "roc_auc": roc_auc,
             #"Precision": precision,
             #"Recall": recall,
-            #"Average precision": average_precision,
-            #"Logistic Accuracy": Logistic_Accuracy
+            "Average precision": average_precision,
+            "Logistic Accuracy": Logistic_Accuracy
             # "Random Forest Accuracy": RF_Accuracy                                 
             
         }
