@@ -47,7 +47,7 @@ def train_and_evaluate(config_path):
     #test_x = test.drop('famhist', axis=1)
 
     # Build logistic regression model
-    model = LogisticRegression(solver='newton-cg', random_state=0).fit(train_x, train_y)
+    model = LogisticRegression(solver='lbfgs', random_state=0).fit(train_x, train_y)
 
     # Report training set score
     train_score = model.score(train_x, train_y) * 100
