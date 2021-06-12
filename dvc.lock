@@ -42,12 +42,12 @@ stages:
       md5: 36e8a351118a864a72cc37e9bf209942
       size: 1964
     - path: src/train_and_evaluate.py
-      md5: 8018196884fa3b2bcbe49f032190fffa
-      size: 2919
+      md5: ca62c5705b04f6ff897376798c0aad4a
+      size: 5361
     outs:
     - path: report/scores.json
-      md5: 910d95dc3afdebdbf591a5fff582024c
-      size: 205
+      md5: aae1d40fdcdddfb103af4e4ed2cd404d
+      size: 296
     - path: saved_models/model.joblib
-      md5: 2430268742dcd0878036621376b268dd
-      size: 861
+      md5: b5c8fb37af259113b3d193b3c6c44386
+      size: 865
