@@ -71,7 +71,7 @@ def train_and_evaluate(config_path):
     #     json.dump({"avg_prec": avg_prec, "roc_auc": roc_auc}, fd, indent=4)
 
     
-    nth_point = math.ceil(len(prc_thresholds) / 1000)
+    nth_point = math.ceil(len(prc_thresholds) / 100)
     prc_points = list(zip(precision, recall, prc_thresholds))[::nth_point]    
     
     
