@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DVC Plot</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.10.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.8.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.5.1"></script>
+</head>
+<body>
+    <div id = "plot0"></div>
+<script type = "text/javascript">
+    var spec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "data": {
+        "values": [
+    {
+        "precision": 0.927570093457944,
+        "recall": 1.0,
+        "rev": "workspace",
+        "threshold": 0.4513363759032511
+    },
+    {
+        "precision": 0.927400468384075,
+        "recall": 0.9974811083123426,
+        "rev": "workspace",
+        "threshold": 0.45201756623495926
+    }
+]
+    },
+    "title": "",
+    "width": 300,
+    "height": 300,
+    "mark": {
+        "type": "line"
+    },
+    "encoding": {
+        "x": {
+            "field": "recall",
+            "type": "quantitative",
+            "title": "recall"
+        },
+        "y": {
+            "field": "precision",
+            "type": "quantitative",
+            "title": "precision",
+            "scale": {
+                "zero": false
+            }
+        },
+        "color": {
+            "field": "rev",
+            "type": "nominal"
+        }
+    }
+}
+;
+    vegaEmbed('#plot0', spec);
+</script>
+</body>
+</html>

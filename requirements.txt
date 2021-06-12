@@ -1,0 +1,5 @@
+dvc
+sklearn
+pandas
+numpy
+gunicorn

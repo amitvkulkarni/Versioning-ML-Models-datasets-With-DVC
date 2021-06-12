@@ -1,0 +1,23 @@
+base:
+  project: SAHeart-project
+  random_state: 2250
+  target_col: chd
+
+data_source:
+  s3_source: data_given/SAHeart.csv
+  
+
+load_data:
+  raw_dataset_csv: data/raw/SAHeart.csv
+
+split_data:
+  train_path: data/processed/train_SAHeart.csv
+  test_path: data/processed/test_SAHeart.csv
+  test_size: 0.9
+
+model_dir: saved_models
+
+reports:
+  #params: report/params.json
+  scores: report/scores.json
+
