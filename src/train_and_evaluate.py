@@ -127,7 +127,7 @@ def train_and_evaluate(config_path):
     # RF_Accuracy = metrics.accuracy_score(test_y, pred_rf)
     # print("Random Forest Accuracy: ", RF_Accuracy)
 
-    #-------------------------------------------------------------------
+    #---------------------------------------------------------------------
 
     # scores_file = config["reports"]["scores"]
     
@@ -136,14 +136,14 @@ def train_and_evaluate(config_path):
             "train_score": train_score,
             "test_score": test_score,
             "roc_auc": roc_auc,
-            "Precision": precision,
-            "Recall": recall,
-            "Average precision": average_precision,
-            "Logistic Accuracy": Logistic_Accuracy
+            #"Precision": precision,
+            #"Recall": recall,
+            #"Average precision": average_precision,
+            #"Logistic Accuracy": Logistic_Accuracy
             # "Random Forest Accuracy": RF_Accuracy                                 
             
         }
-        json.dump(str(scores), f, indent=4)
+        json.dump(scores, f, indent=4)
 
 
     os.makedirs(model_dir, exist_ok=True)
