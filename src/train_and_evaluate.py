@@ -71,7 +71,7 @@ def train_and_evaluate(config_path):
     #     json.dump({"avg_prec": avg_prec, "roc_auc": roc_auc}, fd, indent=4)
 
     
-    nth_point = math.ceil(len(prc_thresholds) / 100)
+    nth_point = math.ceil(len(prc_thresholds)/1000)
     prc_points = list(zip(precision, recall, prc_thresholds))[::nth_point]    
     
     
@@ -114,6 +114,10 @@ def train_and_evaluate(config_path):
     average_precision = average_precision_score(test_y, predicted_val)
     print('Average precision-recall score: {0:0.2f}'.format(average_precision))
 
+
+    # metrics.plot_roc_curve(model, test_x, test_y) 
+    # plt.show() 
+
     #---------------- Random Forest -----------------------------
 
     # model_rf = RandomForestClassifier(n_estimators = 50)  
@@ -140,8 +144,7 @@ def train_and_evaluate(config_path):
             "test_score": test_score,
             "roc_auc": roc_auc,
             #"Precision": precision,
-            #"Recall": recall,
-            "Average precision": average_precision,
+            #"Recall": recall,            "Average precision": average_precision,
             "Logistic Accuracy": Logistic_Accuracy
             # "Random Forest Accuracy": RF_Accuracy                                 
             
