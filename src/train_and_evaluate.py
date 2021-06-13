@@ -42,7 +42,7 @@ def train_and_evaluate(config_path):
     
 
     # Build logistic regression model
-    model = LogisticRegression(solver='sag', random_state=0).fit(train_x, train_y)
+    model = LogisticRegression(solver='saga', random_state=0).fit(train_x, train_y)
     
     # Report training set score
     train_score = model.score(train_x, train_y) * 100
@@ -67,6 +67,7 @@ def train_and_evaluate(config_path):
     prc_file = config["reports"]["prc"]
     roc_file = config["reports"]["roc"]
     auc_file = config["reports"]["auc"]
+    cm_file = config["reports"]["cm"]
 
     # with open(scores_file, "w") as fd:
     #     json.dump({"avg_prec": avg_prec, "roc_auc": roc_auc}, fd, indent=4)
@@ -110,7 +111,13 @@ def train_and_evaluate(config_path):
     df_cm = pd.concat([test_y, df1], axis=1)
     print(df_cm)
     
+    # with open(cm_file, "w") as fd:
+    #     df1 = pd.DataFrame(predicted_val, columns = ['Predicted'])
+    #     df_cm = pd.concat([test_y, df1], axis=1)
+    #     # print(df_cm)
+        
     df_cm.to_csv('cm.csv', index = False)
+
     # with open(auc_file, "w") as fd:
     #     json.dump(df_cm.to_json(), fd, indent=4, cls=NumpyEncoder)
 

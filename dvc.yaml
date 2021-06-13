@@ -38,7 +38,8 @@ stages:
         x: fpr
         y: tpr
     - cm.csv:
-        cache: false    
+        cache: false
+
     outs:
     - saved_models/model.joblib
 

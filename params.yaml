@@ -1,6 +1,6 @@
 base:
   project: SAHeart-project
-  random_state: 1234
+  random_state: 7891
   target_col: chd
 
 data_source:
@@ -13,7 +13,7 @@ load_data:
 split_data:
   train_path: data/processed/train_SAHeart.csv
   test_path: data/processed/test_SAHeart.csv
-  test_size: 0.2
+  test_size: 0.25
 
 model_dir: saved_models
 
