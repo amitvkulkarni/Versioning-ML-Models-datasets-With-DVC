@@ -22,4 +22,5 @@ reports:
   scores: report/scores.json
   roc: report/roc.json
   prc: report/prc.json
+  auc: report/auc.json
 

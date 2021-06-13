@@ -23,16 +23,11 @@ stages:
     - data/processed/train_SAHeart.csv
     - data/processed/test_SAHeart.csv 
     - src/train_and_evaluate.py
-    # params:
-    # - estimators.ElasticNet.params.alpha
-    # - estimators.ElasticNet.params.l1_ratio
+    
     metrics:
     - report/scores.json:
         cache: false
-    # - report/roc.json:
-    #     cache: false
-    # - report/prc.json:
-    #     cache: false
+
     plots:
     - report/prc.json:
         cache: false
@@ -42,6 +37,8 @@ stages:
         cache: false
         x: fpr
         y: tpr
+    - cm.csv:
+        cache: false    
     outs:
     - saved_models/model.joblib
 
