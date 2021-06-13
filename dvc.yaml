@@ -29,7 +29,20 @@ stages:
     metrics:
     - report/scores.json:
         cache: false
-    # - report/params.json:
+    # - report/roc.json:
     #     cache: false
+    # - report/prc.json:
+    #     cache: false
+    plots:
+    - report/prc.json:
+        cache: false
+        x: recall
+        y: precision
+    - report/roc.json:
+        cache: false
+        x: fpr
+        y: tpr
     outs:
     - saved_models/model.joblib
+
+#

@@ -95,7 +95,7 @@ def train_and_evaluate(config_path):
         json.dump(rocs, fd, indent=4, cls=NumpyEncoder)
         
 
-    #----------------------------------------------------------------------------------------------------------------------------
+    #------------------------------------------------------------------------------------------------------------------------
 
     # Print classification report
     print(classification_report(test_y, predicted_val))
