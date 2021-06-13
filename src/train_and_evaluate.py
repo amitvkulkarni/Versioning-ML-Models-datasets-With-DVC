@@ -42,7 +42,7 @@ def train_and_evaluate(config_path):
     
 
     # Build logistic regression model
-    model = LogisticRegression(solver='liblinear', random_state=0).fit(train_x, train_y)
+    model = LogisticRegression(solver='sag', random_state=0).fit(train_x, train_y)
     
     # Report training set score
     train_score = model.score(train_x, train_y) * 100
