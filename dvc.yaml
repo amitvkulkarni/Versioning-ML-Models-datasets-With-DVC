@@ -18,7 +18,8 @@ stages:
     - data/processed/test_SAHeart.csv 
 
   train_and_evaluate:
-    cmd: python src/train_and_evaluate.py --config=params.yaml
+    cmd: [python src/train_and_evaluate.py --config=params.yaml, dvc plots show]
+    
     deps:
     - data/processed/train_SAHeart.csv
     - data/processed/test_SAHeart.csv 
@@ -29,6 +30,7 @@ stages:
         cache: false
 
     plots:
+      
     - report/prc.json:
         cache: false
         x: recall
@@ -39,6 +41,7 @@ stages:
         y: tpr
     - cm.csv:
         cache: false
+        
 
     outs:
     - saved_models/model.joblib

@@ -7,11 +7,11 @@ stages:
       md5: d75f04274cb6fb8dce4662ed762a5621
       size: 22761
     - path: src/get_data.py
-      md5: c1941b7da432bf4feb3a5b78ea6d0f6e
-      size: 773
+      md5: cd5029035165f4cdebb4f105ef891912
+      size: 774
     - path: src/load_data.py
-      md5: 0b2864ce9c271a3c510d48301b8ff058
-      size: 692
+      md5: fd8ed8a4e1d3a7733c33f274a42ba1db
+      size: 693
     outs:
     - path: data/raw/SAHeart.csv
       md5: 9bcb4424eea864e13d075f2f0e17cea9
@@ -23,37 +23,42 @@ stages:
       md5: 9bcb4424eea864e13d075f2f0e17cea9
       size: 19013
     - path: src/split_data.py
-      md5: e7c962d591ced08adfa96a2029d99c32
-      size: 1103
+      md5: 110348167b9411f03fde6ee590d766ea
+      size: 1104
     outs:
     - path: data/processed/test_SAHeart.csv
-      md5: 67679b3a776589abc335a7a5ad9391dd
-      size: 17121
+      md5: 976cd136e6c94ec5555a75604da06c4b
+      size: 4828
     - path: data/processed/train_SAHeart.csv
-      md5: 36e8a351118a864a72cc37e9bf209942
-      size: 1964
+      md5: 119451e2cff42aa2c0ea4a06b9fd20df
+      size: 14257
   train_and_evaluate:
-    cmd: python src/train_and_evaluate.py --config=params.yaml
+    cmd:
+    - python src/train_and_evaluate.py --config=params.yaml
+    - dvc plots show
     deps:
     - path: data/processed/test_SAHeart.csv
-      md5: 67679b3a776589abc335a7a5ad9391dd
-      size: 17121
+      md5: 976cd136e6c94ec5555a75604da06c4b
+      size: 4828
     - path: data/processed/train_SAHeart.csv
-      md5: 36e8a351118a864a72cc37e9bf209942
-      size: 1964
+      md5: 119451e2cff42aa2c0ea4a06b9fd20df
+      size: 14257
     - path: src/train_and_evaluate.py
-      md5: 5a13143d0fbb4032bdc53e5679be5c90
-      size: 5570
+      md5: e7cf78a123bd99fcead715d8c53d5397
+      size: 6148
     outs:
+    - path: cm.csv
+      md5: e60d2906bccddc596f60fac0c670add8
+      size: 595
     - path: report/prc.json
-      md5: df10eff36826e6f347eff6d579f096ca
-      size: 290
+      md5: 6a244c78a075e9d9b16d43e7fba932e9
+      size: 291
     - path: report/roc.json
-      md5: 5be595ae4862619e098bc6fb1dfd84e9
-      size: 357
+      md5: 205a5d8a4f1e7ee7b6b312e6a7600cd8
+      size: 343
     - path: report/scores.json
-      md5: 37054e1ca7eeef9cb7700747645b9bb2
+      md5: ca0a0719f5ff22cbf2c8e1031ccd1735
       size: 162
     - path: saved_models/model.joblib
-      md5: ed21df60f20b119e0a86a9304bb180f4
-      size: 859
+      md5: 1b557ba789633ff442f5a2714aa74267
+      size: 860

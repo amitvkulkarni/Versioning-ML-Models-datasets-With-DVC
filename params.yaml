@@ -1,6 +1,6 @@
 base:
   project: SAHeart-project
-  random_state: 7891
+  random_state: 999
   target_col: chd
 
 data_source:
@@ -18,7 +18,6 @@ split_data:
 model_dir: saved_models
 
 reports:
-  #params: report/params.json
   scores: report/scores.json
   roc: report/roc.json
   prc: report/prc.json

@@ -53,7 +53,7 @@ def train_and_evaluate(config_path):
 
     predicted_val = model.predict(test_x)
 
-    #----------------------------------------------------------------------------------------------------------------------------
+    #-------------------------------------------------------------------------------------------------------------------------
        
     precision, recall, prc_thresholds = metrics.precision_recall_curve(test_y, predicted_val)
     # print('precision value:', precision)
@@ -67,7 +67,7 @@ def train_and_evaluate(config_path):
     prc_file = config["reports"]["prc"]
     roc_file = config["reports"]["roc"]
     auc_file = config["reports"]["auc"]
-    cm_file = config["reports"]["cm"]
+    # cm_file = config["reports"]["cm"]
 
     # with open(scores_file, "w") as fd:
     #     json.dump({"avg_prec": avg_prec, "roc_auc": roc_auc}, fd, indent=4)
@@ -135,7 +135,7 @@ def train_and_evaluate(config_path):
     # metrics.plot_roc_curve(model, test_x, test_y) 
     # plt.show() 
 
-    #---------------- Random Forest -----------------------------
+    #---------------- Random Forest -------------------------------
 
     # model_rf = RandomForestClassifier(n_estimators = 50)  
     

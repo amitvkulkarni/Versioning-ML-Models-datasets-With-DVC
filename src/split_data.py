@@ -1,5 +1,5 @@
 # split the raw data 
-# save it in data/processed folder
+## save it in data/processed folder
 import os
 import argparse
 import pandas as pd
