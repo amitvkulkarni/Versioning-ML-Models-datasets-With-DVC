@@ -13,7 +13,7 @@ load_data:
 split_data:
   train_path: data/processed/train_SAHeart.csv
   test_path: data/processed/test_SAHeart.csv
-  test_size: 0.25
+  test_size: 0.35
 
 model_dir: saved_models
 
