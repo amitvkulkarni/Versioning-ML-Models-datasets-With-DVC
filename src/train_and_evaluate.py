@@ -113,8 +113,7 @@ def train_and_evaluate(config_path):
     df_cm = pd.concat([test_y, df1], axis=1)
     print(df_cm)
     
-   
-        
+          
     df_cm.to_csv('cm.csv', index = False)
 
 
