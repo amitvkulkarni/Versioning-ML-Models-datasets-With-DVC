@@ -1,8 +1,5 @@
 
   
-# load the train and test
-# train algo
-# save the metrices, params
 import os
 import math
 import warnings
@@ -42,11 +39,7 @@ def train_and_evaluate(config_path):
     print("Test Size", test_size)
     dvclive.log("Test", test_size)
 
-    # print("******************check for version control*****************************************")
-    # print(train.count)
-    # print(test.count)
-    # print("*****************check for version control*****************************************")
-
+    
     train_y = train[target]
     test_y = test[target]
 
@@ -68,11 +61,8 @@ def train_and_evaluate(config_path):
 
     predicted_val = model.predict(test_x)
 
-    #-----------------------------------------------------------------------------------------------------------------------
-       
+           
     precision, recall, prc_thresholds = metrics.precision_recall_curve(test_y, predicted_val)
-    # print('precision value:', precision)
-    # print('recall value:', recall)
     fpr, tpr, roc_thresholds = metrics.roc_curve(test_y, predicted_val)
 
     avg_prec = metrics.average_precision_score(test_y, predicted_val)
@@ -82,7 +72,7 @@ def train_and_evaluate(config_path):
     prc_file = config["reports"]["prc"]
     roc_file = config["reports"]["roc"]
     auc_file = config["reports"]["auc"]
-    # cm_file = config["reports"]["cm"]
+    
 
         
     nth_point = math.ceil(len(prc_thresholds)/1000)
@@ -109,7 +99,7 @@ def train_and_evaluate(config_path):
         json.dump(rocs, fd, indent=4, cls=NumpyEncoder)
         
 
-    #------------------------------------------------------------------------------------------------------------------------
+    
 
     # Print classification report
     print(classification_report(test_y, predicted_val))
@@ -123,15 +113,11 @@ def train_and_evaluate(config_path):
     df_cm = pd.concat([test_y, df1], axis=1)
     print(df_cm)
     
-    # with open(cm_file, "w") as fd:
-    #     df1 = pd.DataFrame(predicted_val, columns = ['Predicted'])
-    #     df_cm = pd.concat([test_y, df1], axis=1)
-    #     # print(df_cm)
+   
         
     df_cm.to_csv('cm.csv', index = False)
 
-    # with open(auc_file, "w") as fd:
-    #     json.dump(df_cm.to_json(), fd, indent=4, cls=NumpyEncoder)
+
 
     roc_auc = roc_auc_score(test_y, model.predict_proba(test_x)[:, 1])
     dvclive.log("roc_auc", roc_auc)
@@ -145,30 +131,6 @@ def train_and_evaluate(config_path):
     average_precision = average_precision_score(test_y, predicted_val)
     print('Average precision-recall score: {0:0.2f}'.format(average_precision))
 
-
-
-    # metrics.plot_roc_curve(model, test_x, test_y) 
-    # plt.show() 
-
-    #---------------- Random Forest ------------------------------------
-
-    # model_rf = RandomForestClassifier(n_estimators = 50)  
-    
-    # model_rf.fit(train_x, train_y)
-    
-    # # performing predictions on the test dataset
-    # pred_rf = model_rf.predict(test_x)
-    
-    # # metrics are used to find accuracy or error
-        
-    
-    # # using metrics module for accuracy calculation
-    # RF_Accuracy = metrics.accuracy_score(test_y, pred_rf)
-    # print("Random Forest Accuracy: ", RF_Accuracy)
-
-    #------------------------------------------------------------------------
-
-    # scores_file = config["reports"]["scores"]
     
     with open(scores_file, "w") as f:
         scores = {
@@ -178,10 +140,8 @@ def train_and_evaluate(config_path):
             "Train Size": train_size,
             "Test Size": test_size,
             "Solver": solver,
-            #"Precision": precision,
-            #"Recall": recall,            "Average precision": average_precision,
             "Accuracy": Logistic_Accuracy
-            # "Random Forest Accuracy": RF_Accuracy                                 
+            
             
         }
         json.dump(scores, f, indent=4)
