@@ -1,0 +1,11 @@
+#INITIAL SETTINGS
+data_directory: "./Data/"
+data_name: "SAHeart.csv"
+drop_columns: ["sbp"]
+target_name: "chd"
+test_size: 0.3
+random_state: 123
+solver: 'saga'
+
+
+

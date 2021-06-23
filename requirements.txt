@@ -1,0 +1,8 @@
+dvc
+sklearn
+pandas
+numpy
+gunicorn
+logging
+mlflow
+urlparse

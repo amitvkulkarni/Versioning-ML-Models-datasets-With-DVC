@@ -1,0 +1,28 @@
+base:
+  project: SAHeart-project
+  random_state: 789456
+  target_col: chd
+  solver: liblinear
+  ### liblinear, newton-cg, sag, saga, lbfgs
+
+data_source:
+  s3_source: data_given/SAHeart.csv
+
+
+load_data:
+  raw_dataset_csv: data/raw/SAHeart.csv
+
+split_data:
+  train_path: data/processed/train_SAHeart.csv
+  test_path: data/processed/test_SAHeart.csv
+  test_size: 0.5
+
+model_dir: saved_models
+
+reports:
+  scores: report/scores.json
+  roc: report/roc.json
+  prc: report/prc.json
+  auc: report/auc.json
+
+test_size: 0.5
